@@ -11,6 +11,14 @@
       "description": "Api untuk aplikasi mobile"
     }
   ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
   "paths": {
     "/auth/login": {
       "post": {
@@ -137,6 +145,11 @@
     },
     "/logout": {
       "post": {
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "summary": "Logout.",
         "responses": {
           "200": {
@@ -168,6 +181,11 @@
     },
     "/update-password": {
       "post": {
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "summary": "Ubah Password.",
         "requestBody": {
           "description": "Data yang dibutuhkan untuk mengubah password.",
@@ -274,6 +292,11 @@
     },
     "/dashboard": {
       "get": {
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "summary": "Dashboard.",
         "responses": {
           "200": {
@@ -382,6 +405,11 @@
     },
     "/transaction-log": {
       "get": {
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "summary": "Dashboard.",
         "parameters": [
           {
@@ -518,6 +546,11 @@
     },
     "/product": {
       "post": {
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "summary": "Product.",
         "requestBody": {
           "description": "Tambah data barang.",
@@ -619,6 +652,11 @@
         }
       },
       "get": {
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "summary": "Product.",
         "responses": {
           "200": {
@@ -690,6 +728,11 @@
     },
     "/product/{productId}/delete-product": {
       "post": {
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "summary": "Product.",
         "parameters": [
           {
@@ -769,6 +812,11 @@
     },
     "/product/{productId}/update-price": {
       "post": {
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "summary": "update harga product.",
         "parameters": [
           {
@@ -825,6 +873,11 @@
     },
     "/product/{productId}/update-image": {
       "post": {
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "summary": "Product.",
         "parameters": [
           {
@@ -883,6 +936,11 @@
     },
     "/product/history": {
       "get": {
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "summary": "Product.",
         "responses": {
           "200": {
@@ -984,6 +1042,11 @@
     },
     "/profile": {
       "get": {
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "summary": "Profile",
         "responses": {
           "200": {
@@ -1103,6 +1166,11 @@
     },
     "/update-store-profile": {
       "post": {
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "summary": "Product.",
         "requestBody": {
           "description": "Update foto barang.",
@@ -1253,6 +1321,11 @@
     },
     "/shop": {
       "post": {
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "summary": "Belanja.",
         "parameters": [
           {
@@ -1375,6 +1448,11 @@
     },
     "/shop/{id}": {
       "post": {
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "summary": "Barang Warung.",
         "parameters": [
           {
@@ -1457,6 +1535,11 @@
     },
     "/shop/customer/{id}": {
       "post": {
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "summary": "Pemesanan Pembeli",
         "parameters": [
           {
@@ -1594,6 +1677,11 @@
     },
     "/transaction/history": {
       "post": {
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "summary": "Histori pemesanan ke warung.",
         "responses": {
           "200": {
@@ -1662,6 +1750,11 @@
     },
     "/transaction/send": {
       "post": {
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "summary": "Kirim / Serahkan barang pesanan.",
         "parameters": [
           {
@@ -1703,6 +1796,11 @@
     },
     "/transaction/{id}/confirm": {
       "post": {
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "summary": "Konfirmasi penerimaan barang.",
         "parameters": [
           {
