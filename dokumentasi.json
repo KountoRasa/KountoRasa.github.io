@@ -1,0 +1,1675 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Api Gerobak Online",
+    "description": "API untuk web https://gerobak-online.xyz.",
+    "version": "0.1.9"
+  },
+  "servers": [
+    {
+      "url": "https://gerobak-online.xyz/api",
+      "description": "Api untuk aplikasi mobile"
+    }
+  ],
+  "paths": {
+    "/auth/login": {
+      "post": {
+        "summary": "Otentikasi untuk mendapatkan token.",
+        "responses": {
+          "200": {
+            "description": "Token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Berhasil"
+                    },
+                    "data": {
+                      "type": "string",
+                      "example": "448|hiYZPpZcIdzOoiewWgpjjQuXPezZ1eAYyZoUKcWN"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/register": {
+      "post": {
+        "summary": "Register",
+        "responses": {
+          "200": {
+            "description": "Register",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "example": "berhasil"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/logout": {
+      "post": {
+        "summary": "Logout.",
+        "responses": {
+          "200": {
+            "description": "Token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Berhasil"
+                    },
+                    "data": {
+                      "type": "string",
+                      "example": "Berhasil logout"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/update-password": {
+      "post": {
+        "summary": "Ubah Password.",
+        "requestBody": {
+          "description": "Data yang dibutuhkan untuk mengubah password.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "old_password": {
+                    "type": "string"
+                  },
+                  "new_password": {
+                    "type": "string"
+                  },
+                  "new_password_confirmation": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Berhasil update password",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Password berhasil diubah"
+                    },
+                    "data": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/forgot-password": {
+      "post": {
+        "summary": "Lupa password.",
+        "requestBody": {
+          "description": "Lupa password.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "password_confirmation": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Berhasil mengubah password",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Berhasil"
+                    },
+                    "data": {
+                      "type": "boolean",
+                      "example": "Password berhasil diubah"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dashboard": {
+      "get": {
+        "summary": "Dashboard.",
+        "responses": {
+          "200": {
+            "description": "Dashboard",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Berhasil"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "barang": {
+                          "type": "integer"
+                        },
+                        "totalBarang": {
+                          "type": "integer"
+                        },
+                        "barangMasuk": {
+                          "type": "integer"
+                        },
+                        "barangKeluar": {
+                          "type": "integer"
+                        },
+                        "jumlahPemesanan": {
+                          "type": "integer"
+                        },
+                        "chartPenjualan": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "year": {
+                                "type": "integer",
+                                "example": 2022
+                              },
+                              "data": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "date": {
+                                      "type": "string",
+                                      "example": "13 Aug"
+                                    },
+                                    "value": {
+                                      "type": "integer"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "chartPendapatan": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "year": {
+                                "type": "integer",
+                                "example": 2022
+                              },
+                              "data": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "date": {
+                                      "type": "string",
+                                      "example": "13 Aug"
+                                    },
+                                    "value": {
+                                      "type": "integer"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "rataRataOmset": {
+                          "type": "number",
+                          "format": "double"
+                        },
+                        "rataRataTransaksi": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transaction-log": {
+      "get": {
+        "summary": "Dashboard.",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "date",
+            "schema": {
+              "type": "string"
+            },
+            "description": "filter by date."
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "pagination."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dashboard",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Berhasil"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "logTransaksi": {
+                          "type": "object",
+                          "properties": {
+                            "current_page": {
+                              "type": "integer",
+                              "example": 2
+                            },
+                            "data": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "integer"
+                                  },
+                                  "user_id": {
+                                    "type": "integer"
+                                  },
+                                  "tanggal": {
+                                    "type": "string",
+                                    "example": "2022-09-06"
+                                  },
+                                  "jam": {
+                                    "type": "string",
+                                    "example": "10:08:26"
+                                  },
+                                  "aktifitas_transaksi": {
+                                    "type": "string",
+                                    "example": "Mengirimkan/Menyerahkan barang ke Seka Diasnoriga Koswara"
+                                  },
+                                  "role": {
+                                    "type": "string",
+                                    "example": "Warung"
+                                  },
+                                  "created_at": {
+                                    "type": "string",
+                                    "example": "2022-09-06T03:08:26.000000Z"
+                                  },
+                                  "updated_at": {
+                                    "type": "string",
+                                    "example": "2022-09-06T03:08:26.000000Z"
+                                  }
+                                }
+                              }
+                            },
+                            "first_page_url": {
+                              "type": "string",
+                              "example": "https://gerobak-online.xyz/api/transaction-log?page=1"
+                            },
+                            "from": {
+                              "type": "integer",
+                              "example": 4
+                            },
+                            "last_page": {
+                              "type": "integer",
+                              "example": 2
+                            },
+                            "last_page_url": {
+                              "type": "string",
+                              "example": "https://gerobak-online.xyz/api/transaction-log?page=2"
+                            },
+                            "next_page_url": {
+                              "type": "string"
+                            },
+                            "path": {
+                              "type": "string",
+                              "example": "https://gerobak-online.xyz/api/transaction-log"
+                            },
+                            "per_page": {
+                              "type": "integer",
+                              "example": 3
+                            },
+                            "prev_page_url": {
+                              "type": "string",
+                              "example": "https://gerobak-online.xyz/api/transaction-log?page=1"
+                            },
+                            "to": {
+                              "type": "integer",
+                              "example": 6
+                            },
+                            "total": {
+                              "type": "integer",
+                              "example": 6
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/product": {
+      "post": {
+        "summary": "Product.",
+        "requestBody": {
+          "description": "Tambah data barang.",
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nama_barang": {
+                    "type": "string"
+                  },
+                  "foto_barang": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "jumlah": {
+                    "type": "integer"
+                  },
+                  "satuan": {
+                    "type": "string",
+                    "example": "KG"
+                  },
+                  "harga_beli": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "harga_jual": {
+                    "type": "number",
+                    "format": "double"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Product",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Berhasil"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "nama_barang": {
+                          "type": "string"
+                        },
+                        "foto_barang": {
+                          "type": "string"
+                        },
+                        "jumlah": {
+                          "type": "string",
+                          "example": "50"
+                        },
+                        "satuan": {
+                          "type": "string",
+                          "example": "Kg"
+                        },
+                        "harga_beli": {
+                          "type": "string",
+                          "example": 1000000
+                        },
+                        "harga_jual": {
+                          "type": "string",
+                          "example": 1250000
+                        },
+                        "pelanggan_id": {
+                          "type": "integer"
+                        },
+                        "created_at": {
+                          "type": "string",
+                          "example": "2022-09-06T03:08:26.000000Z"
+                        },
+                        "updated_at": {
+                          "type": "string",
+                          "example": "2022-09-06T03:08:26.000000Z"
+                        },
+                        "id": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Product.",
+        "responses": {
+          "200": {
+            "description": "Product",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Berhasil"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "nama_barang": {
+                            "type": "string"
+                          },
+                          "foto_barang": {
+                            "type": "string"
+                          },
+                          "jumlah": {
+                            "type": "string",
+                            "example": "50"
+                          },
+                          "satuan": {
+                            "type": "string",
+                            "example": "Kg"
+                          },
+                          "harga_beli": {
+                            "type": "string",
+                            "example": 1000000
+                          },
+                          "harga_jual": {
+                            "type": "string",
+                            "example": 1250000
+                          },
+                          "pelanggan_id": {
+                            "type": "integer"
+                          },
+                          "created_at": {
+                            "type": "string",
+                            "example": "2022-09-06T03:08:26.000000Z"
+                          },
+                          "updated_at": {
+                            "type": "string",
+                            "example": "2022-09-06T03:08:26.000000Z"
+                          },
+                          "id": {
+                            "type": "integer"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/product/{productId}/delete-product": {
+      "post": {
+        "summary": "Product.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "productId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Id Product"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Product",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Berhasil"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "nama_barang": {
+                          "type": "string"
+                        },
+                        "foto_barang": {
+                          "type": "string"
+                        },
+                        "jumlah": {
+                          "type": "string",
+                          "example": "50"
+                        },
+                        "satuan": {
+                          "type": "string",
+                          "example": "Kg"
+                        },
+                        "harga_beli": {
+                          "type": "string",
+                          "example": 1000000
+                        },
+                        "harga_jual": {
+                          "type": "string",
+                          "example": 1250000
+                        },
+                        "pelanggan_id": {
+                          "type": "integer"
+                        },
+                        "created_at": {
+                          "type": "string",
+                          "example": "2022-09-06T03:08:26.000000Z"
+                        },
+                        "updated_at": {
+                          "type": "string",
+                          "example": "2022-09-06T03:08:26.000000Z"
+                        },
+                        "id": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/product/{productId}/update-price": {
+      "post": {
+        "summary": "update harga product.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "productId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Id Product"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "harga_barang": {
+                    "type": "number",
+                    "format": "double"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Product",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Berhasil"
+                    },
+                    "data": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/product/{productId}/update-image": {
+      "post": {
+        "summary": "Product.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "productId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Id Product"
+          }
+        ],
+        "requestBody": {
+          "description": "Update foto barang.",
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "foto": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Product",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Berhasil"
+                    },
+                    "data": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/product/history": {
+      "get": {
+        "summary": "Product.",
+        "responses": {
+          "200": {
+            "description": "Product",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Berhasil"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer"
+                          },
+                          "no_referensi": {
+                            "type": "string",
+                            "example": "BRG/MSK/00000024"
+                          },
+                          "barang_warung_id": {
+                            "type": "integer"
+                          },
+                          "harga_beli": {
+                            "type": "number",
+                            "format": "double"
+                          },
+                          "qty": {
+                            "type": "integer"
+                          },
+                          "created_at": {
+                            "type": "string",
+                            "example": "2022-09-06T03:08:26.000000Z"
+                          },
+                          "updated_at": {
+                            "type": "string",
+                            "example": "2022-09-06T03:08:26.000000Z"
+                          },
+                          "barang_warung": {
+                            "type": "object",
+                            "properties": {
+                              "nama_barang": {
+                                "type": "string"
+                              },
+                              "foto_barang": {
+                                "type": "string"
+                              },
+                              "jumlah": {
+                                "type": "string",
+                                "example": "50"
+                              },
+                              "satuan": {
+                                "type": "string",
+                                "example": "Kg"
+                              },
+                              "harga_beli": {
+                                "type": "string",
+                                "example": 1000000
+                              },
+                              "harga_jual": {
+                                "type": "string",
+                                "example": 1250000
+                              },
+                              "pelanggan_id": {
+                                "type": "integer"
+                              },
+                              "created_at": {
+                                "type": "string",
+                                "example": "2022-09-06T03:08:26.000000Z"
+                              },
+                              "updated_at": {
+                                "type": "string",
+                                "example": "2022-09-06T03:08:26.000000Z"
+                              },
+                              "id": {
+                                "type": "integer"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/profile": {
+      "get": {
+        "summary": "Profile",
+        "responses": {
+          "200": {
+            "description": "Profile",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Berhasil"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer"
+                          },
+                          "username": {
+                            "type": "integer"
+                          },
+                          "email": {
+                            "type": "number",
+                            "format": "double"
+                          },
+                          "created_at": {
+                            "type": "string",
+                            "example": "2022-09-06T03:08:26.000000Z"
+                          },
+                          "updated_at": {
+                            "type": "string",
+                            "example": "2022-09-06T03:08:26.000000Z"
+                          },
+                          "pelanggan": {
+                            "type": "object",
+                            "properties": {
+                              "nama": {
+                                "type": "string"
+                              },
+                              "alamat": {
+                                "type": "string"
+                              },
+                              "telepon": {
+                                "type": "string"
+                              },
+                              "nik": {
+                                "type": "string"
+                              },
+                              "tempat_lahir": {
+                                "type": "string"
+                              },
+                              "tgl_lahir": {
+                                "type": "string"
+                              },
+                              "agama": {
+                                "type": "integer"
+                              },
+                              "pekerjaan": {
+                                "type": "string"
+                              },
+                              "jenis_kelamin": {
+                                "type": "string"
+                              },
+                              "status_perkawinan": {
+                                "type": "string"
+                              },
+                              "kewarganegaraan": {
+                                "type": "string"
+                              },
+                              "foto": {
+                                "type": "string"
+                              },
+                              "latitude": {
+                                "type": "number",
+                                "format": "double"
+                              },
+                              "longitude": {
+                                "type": "number",
+                                "format": "double"
+                              },
+                              "jam_operasional": {
+                                "type": "string"
+                              },
+                              "tahun_mulai": {
+                                "type": "string"
+                              },
+                              "created_at": {
+                                "type": "string",
+                                "example": "2022-09-06T03:08:26.000000Z"
+                              },
+                              "updated_at": {
+                                "type": "string",
+                                "example": "2022-09-06T03:08:26.000000Z"
+                              },
+                              "id": {
+                                "type": "integer"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/update-store-profile": {
+      "post": {
+        "summary": "Product.",
+        "requestBody": {
+          "description": "Update foto barang.",
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nama": {
+                    "type": "string"
+                  },
+                  "alamat": {
+                    "type": "string"
+                  },
+                  "telepon": {
+                    "type": "string"
+                  },
+                  "nik": {
+                    "type": "string"
+                  },
+                  "tempat_lahir": {
+                    "type": "string"
+                  },
+                  "tgl_lahir": {
+                    "type": "string"
+                  },
+                  "agama": {
+                    "type": "integer"
+                  },
+                  "pekerjaan": {
+                    "type": "string"
+                  },
+                  "jenis_kelamin": {
+                    "type": "string"
+                  },
+                  "status_perkawinan": {
+                    "type": "string"
+                  },
+                  "kewarganegaraan": {
+                    "type": "string"
+                  },
+                  "foto": {
+                    "type": "string"
+                  },
+                  "latitude": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "longitude": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "jam_operasional": {
+                    "type": "string"
+                  },
+                  "tahun_mulai": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Product",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Berhasil"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "profile": {
+                          "type": "object",
+                          "properties": {
+                            "nama": {
+                              "type": "string"
+                            },
+                            "alamat": {
+                              "type": "string"
+                            },
+                            "telepon": {
+                              "type": "string"
+                            },
+                            "nik": {
+                              "type": "string"
+                            },
+                            "tempat_lahir": {
+                              "type": "string"
+                            },
+                            "tgl_lahir": {
+                              "type": "string"
+                            },
+                            "agama": {
+                              "type": "integer"
+                            },
+                            "pekerjaan": {
+                              "type": "string"
+                            },
+                            "jenis_kelamin": {
+                              "type": "string"
+                            },
+                            "status_perkawinan": {
+                              "type": "string"
+                            },
+                            "kewarganegaraan": {
+                              "type": "string"
+                            },
+                            "foto": {
+                              "type": "string"
+                            },
+                            "latitude": {
+                              "type": "number",
+                              "format": "double"
+                            },
+                            "longitude": {
+                              "type": "number",
+                              "format": "double"
+                            },
+                            "jam_operasional": {
+                              "type": "string"
+                            },
+                            "tahun_mulai": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/shop": {
+      "post": {
+        "summary": "Belanja.",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "lat",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            },
+            "description": "Latitude"
+          },
+          {
+            "in": "query",
+            "name": "lng",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            },
+            "description": "Longitude"
+          }
+        ],
+        "requestBody": {
+          "description": "Update foto barang.",
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "foto": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Product",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Berhasil"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "nama": {
+                            "type": "string"
+                          },
+                          "alamat": {
+                            "type": "string"
+                          },
+                          "telepon": {
+                            "type": "string"
+                          },
+                          "nik": {
+                            "type": "string"
+                          },
+                          "tempat_lahir": {
+                            "type": "string"
+                          },
+                          "tgl_lahir": {
+                            "type": "string"
+                          },
+                          "agama": {
+                            "type": "integer"
+                          },
+                          "pekerjaan": {
+                            "type": "string"
+                          },
+                          "jenis_kelamin": {
+                            "type": "string"
+                          },
+                          "status_perkawinan": {
+                            "type": "string"
+                          },
+                          "kewarganegaraan": {
+                            "type": "string"
+                          },
+                          "foto": {
+                            "type": "string"
+                          },
+                          "latitude": {
+                            "type": "number",
+                            "format": "double"
+                          },
+                          "longitude": {
+                            "type": "number",
+                            "format": "double"
+                          },
+                          "jam_operasional": {
+                            "type": "string"
+                          },
+                          "tahun_mulai": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/shop/{id}": {
+      "post": {
+        "summary": "Barang Warung.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "number"
+            },
+            "description": "Id Warung"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Product",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Berhasil"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "nama_barang": {
+                            "type": "string"
+                          },
+                          "foto_barang": {
+                            "type": "string"
+                          },
+                          "jumlah": {
+                            "type": "string",
+                            "example": "50"
+                          },
+                          "satuan": {
+                            "type": "string",
+                            "example": "Kg"
+                          },
+                          "harga_beli": {
+                            "type": "string",
+                            "example": 1000000
+                          },
+                          "harga_jual": {
+                            "type": "string",
+                            "example": 1250000
+                          },
+                          "pelanggan_id": {
+                            "type": "integer"
+                          },
+                          "created_at": {
+                            "type": "string",
+                            "example": "2022-09-06T03:08:26.000000Z"
+                          },
+                          "updated_at": {
+                            "type": "string",
+                            "example": "2022-09-06T03:08:26.000000Z"
+                          },
+                          "id": {
+                            "type": "integer"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/shop/customer/{id}": {
+      "post": {
+        "summary": "Pemesanan Pembeli",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "number"
+            },
+            "description": "Id Barang"
+          }
+        ],
+        "requestBody": {
+          "description": "Pemesanan Pembeli.",
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "penerima_po": {
+                    "type": "string"
+                  },
+                  "pembeli_id": {
+                    "type": "string"
+                  },
+                  "pelanggan_id": {
+                    "type": "string"
+                  },
+                  "harga": {
+                    "type": "string"
+                  },
+                  "nama_barang": {
+                    "type": "string"
+                  },
+                  "satuan": {
+                    "type": "string"
+                  },
+                  "biaya_admin": {
+                    "type": "string"
+                  },
+                  "jumlah": {
+                    "type": "string"
+                  },
+                  "pembayaran": {
+                    "type": "string"
+                  },
+                  "metode_pembayaran": {
+                    "type": "string"
+                  },
+                  "pengiriman": {
+                    "type": "string"
+                  },
+                  "nama_pemesan": {
+                    "type": "string"
+                  },
+                  "telepon": {
+                    "type": "string"
+                  },
+                  "alamat_pemesan": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Product",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Berhasil"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "nama_barang": {
+                            "type": "string"
+                          },
+                          "foto_barang": {
+                            "type": "string"
+                          },
+                          "jumlah": {
+                            "type": "string",
+                            "example": "50"
+                          },
+                          "satuan": {
+                            "type": "string",
+                            "example": "Kg"
+                          },
+                          "harga_beli": {
+                            "type": "string",
+                            "example": 1000000
+                          },
+                          "harga_jual": {
+                            "type": "string",
+                            "example": 1250000
+                          },
+                          "pelanggan_id": {
+                            "type": "integer"
+                          },
+                          "created_at": {
+                            "type": "string",
+                            "example": "2022-09-06T03:08:26.000000Z"
+                          },
+                          "updated_at": {
+                            "type": "string",
+                            "example": "2022-09-06T03:08:26.000000Z"
+                          },
+                          "id": {
+                            "type": "integer"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transaction/history": {
+      "post": {
+        "summary": "Histori pemesanan ke warung.",
+        "responses": {
+          "200": {
+            "description": "Product",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Berhasil"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "no_referensi": {
+                            "type": "string"
+                          },
+                          "pembayaran": {
+                            "type": "string"
+                          },
+                          "metode_pembayaran": {
+                            "type": "string"
+                          },
+                          "metode_pengiriman": {
+                            "type": "string"
+                          },
+                          "nama_pemesan": {
+                            "type": "string"
+                          },
+                          "no_telp": {
+                            "type": "string"
+                          },
+                          "total": {
+                            "type": "number",
+                            "format": "double"
+                          },
+                          "created_at": {
+                            "type": "string",
+                            "example": "2022-09-06T03:08:26.000000Z"
+                          },
+                          "updated_at": {
+                            "type": "string",
+                            "example": "2022-09-06T03:08:26.000000Z"
+                          },
+                          "id": {
+                            "type": "integer"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transaction/send": {
+      "post": {
+        "summary": "Kirim / Serahkan barang pesanan.",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Product",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Berhasil"
+                    },
+                    "data": {
+                      "type": "string",
+                      "example": "Barang Diserahkan!"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transaction/{id}/confirm": {
+      "post": {
+        "summary": "Konfirmasi penerimaan barang.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Product",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Berhasil"
+                    },
+                    "data": {
+                      "type": "string",
+                      "example": "Barang diterima!"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
